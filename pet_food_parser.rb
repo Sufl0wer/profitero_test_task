@@ -1,7 +1,12 @@
 # frozen_string_literal: true
 
-require 'nokogiri'
-require 'curb'
-require 'csv'
+require 'rubygems'
+require 'bundler/setup'
+Bundler.require(:default)
 
+require 'open-uri'
 
+require_relative 'product'
+
+Product.download_page
+Product.all

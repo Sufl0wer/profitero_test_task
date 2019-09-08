@@ -1,7 +1,7 @@
 # frozen_string_literal: true
 
 class Category
-  PRODUCTS_CSS_CLASS = '//div[@class="product-container"]/div/div/a/@href'
+  PRODUCTS_CLASS = '//div[@class="product-container"]/div/div/a/@href'
 
   attr_reader :products_links
 
@@ -20,7 +20,7 @@ class Category
         @products_links << link.value
       end
 
-      puts "Page #{page}"
+      puts "page #{page} loading..."
       page += 1
     end
     products_links
@@ -29,7 +29,7 @@ class Category
   private
 
   def links_on_current_page(page)
-    html_document(page).xpath(PRODUCTS_CSS_CLASS)
+    html_document(page).xpath(PRODUCTS_CLASS)
   end
 
   def html_document(page)

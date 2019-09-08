@@ -18,8 +18,8 @@ puts 'Products links loading...'
 
 links = Category.load_products_links(url)
 
-a = Product.new(links.first)
-b = a.http_response
+a = Product.new(links[0])
+a.parse_data
 
 binding.pry
 

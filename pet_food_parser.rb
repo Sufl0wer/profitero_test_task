@@ -7,6 +7,7 @@ Bundler.require(:default)
 require 'open-uri'
 
 require_relative 'category'
+require_relative 'product'
 
 url = ARGV[0]
 # file_name = ARGV[1]
@@ -15,7 +16,10 @@ puts 'Parsing started...'
 
 puts 'Products links loading...'
 
-a = Category.load_products_links(url)
+links = Category.load_products_links(url)
+
+a = Product.new(links.first)
+b = a.http_response
 
 binding.pry
 

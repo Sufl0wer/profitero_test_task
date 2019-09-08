@@ -32,15 +32,15 @@ class Category
     html_document(page).xpath(PRODUCTS_CSS_CLASS)
   end
 
+  def html_document(page)
+    Nokogiri::HTML(http_response(page).body)
+  end
+
   def http_response(page)
     if page == 1
       Curl.get(@url)
     else
       Curl.get(@url + "?p=#{page}")
     end
-  end
-
-  def html_document(page)
-    Nokogiri::HTML(http_response(page).body)
   end
 end
